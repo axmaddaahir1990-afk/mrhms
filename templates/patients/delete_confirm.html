@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="max-w-xl">
+  <div class="glass rounded-xl p-6 bg-white/70">
+    <h2 class="text-xl font-semibold mb-4">Confirm Delete • Xaqiiji Tirtirka</h2>
+    <p class="text-slate-600">Delete patient: <strong>{{ patient.name }}</strong>?</p>
+    <form method="post" class="mt-4 flex gap-2">
+      {% csrf_token %}
+      <button class="px-3 py-2 rounded bg-red-600 text-white hover:bg-red-700">Delete</button>
+      <a href="/patients/{{ patient.id }}/" class="px-3 py-2 rounded bg-slate-200 text-slate-700">Cancel</a>
+    </form>
+  </div>
+{% endblock %}
+

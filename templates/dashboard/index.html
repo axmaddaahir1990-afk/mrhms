@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+  <div class="glass rounded-xl p-5 bg-white/70">
+    <div class="text-slate-500 text-sm">Total Patients • Bukaanada Guud</div>
+    <div class="mt-2 text-3xl font-semibold text-sky-700">{{ metrics.total_patients }}</div>
+  </div>
+  <div class="glass rounded-xl p-5 bg-white/70">
+    <div class="text-slate-500 text-sm">Doctors On Duty • Dhakhaatiirta Shaqeynaya</div>
+    <div class="mt-2 text-3xl font-semibold text-green-700">{{ metrics.doctors_on_duty }}</div>
+  </div>
+  <div class="glass rounded-xl p-5 bg-white/70">
+    <div class="text-slate-500 text-sm">Appointments Today • Ballamaha Maanta</div>
+    <div class="mt-2 text-3xl font-semibold text-sky-700">{{ metrics.appointments_today }}</div>
+  </div>
+  <div class="glass rounded-xl p-5 bg-white/70">
+    <div class="text-slate-500 text-sm">Available Beds • Sariiraha Bannaan</div>
+    <div class="mt-2 text-3xl font-semibold text-green-700">{{ metrics.available_beds }}</div>
+  </div>
+</div>
+<div class="mt-6 glass rounded-xl p-6 bg-white/70">
+  <h2 class="text-lg font-semibold">Welcome to Mudug Regional Hospital • Ku soo dhowow Isbitaalka Mudug</h2>
+  <p class="text-slate-600 mt-2 text-sm">Premium, clean, and simple hospital system UI.</p>
+</div>
+{% endblock %}
+

@@ -1,0 +1,23 @@
+<header class="bg-white/70 glass">
+  <div class="max-w-full px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <button class="md:hidden px-3 py-2 rounded bg-sky-100 text-sky-700">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <h1 class="font-semibold text-slate-800">Mudug Regional Hospital</h1>
+      <span class="text-xs px-2 py-1 rounded bg-green-100 text-green-700">Global & Premium UI</span>
+    </div>
+    <div class="flex items-center gap-4">
+      <a href="/notifications/" class="relative text-slate-600 hover:text-sky-700">
+        <i class="fa-regular fa-bell text-xl"></i>
+      </a>
+      {% if user.is_authenticated %}
+        <span class="text-sm text-slate-600">Hello, {{ user.get_full_name|default:user.username }}</span>
+        <a href="/logout/" class="px-3 py-2 rounded bg-sky-600 text-white hover:bg-sky-700">Logout</a>
+      {% else %}
+        <a href="/login/" class="px-3 py-2 rounded bg-sky-600 text-white hover:bg-sky-700">Login</a>
+      {% endif %}
+    </div>
+  </div>
+</header>
+

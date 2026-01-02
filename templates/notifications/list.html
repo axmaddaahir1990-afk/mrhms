@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="flex justify-between items-center mb-4">
+  <h2 class="text-xl font-semibold">Notifications • Ogeysiisyo</h2>
+</div>
+<div class="space-y-3">
+  {% for n in notifications %}
+  <div class="glass rounded-xl p-4 bg-white/70">
+    <div class="flex justify-between items-center">
+      <div class="font-semibold">{{ n.title }}</div>
+      <div class="text-xs text-slate-500">{{ n.created_at }}</div>
+    </div>
+    <div class="mt-2 text-slate-700">{{ n.message }}</div>
+    {% if n.level == 'warning' %}
+      <div class="mt-2 text-xs px-2 py-1 rounded bg-yellow-100 text-yellow-700 inline-block">Warning</div>
+    {% elif n.level == 'success' %}
+      <div class="mt-2 text-xs px-2 py-1 rounded bg-green-100 text-green-700 inline-block">Success</div>
+    {% else %}
+      <div class="mt-2 text-xs px-2 py-1 rounded bg-sky-100 text-sky-700 inline-block">Info</div>
+    {% endif %}
+  </div>
+  {% empty %}
+  <div class="text-slate-500">No notifications</div>
+  {% endfor %}
+</div>
+{% endblock %}
+

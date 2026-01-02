@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="max-w-xl">
+  <div class="glass rounded-xl p-6 bg-white/70">
+    <h2 class="text-xl font-semibold mb-4">{{ title }}</h2>
+    <form method="post" class="space-y-4">
+      {% csrf_token %}
+      {% for field in form %}
+      <div>
+        <label class="block text-sm text-slate-600 mb-1">{{ field.label }}</label>
+        {{ field }}
+        {% if field.errors %}
+          <div class="text-red-600 text-xs mt-1">{{ field.errors|join:', ' }}</div>
+        {% endif %}
+      </div>
+      {% endfor %}
+      <button class="px-3 py-2 rounded bg-sky-600 text-white hover:bg-sky-700">Save</button>
+    </form>
+  </div>
+{% endblock %}
+

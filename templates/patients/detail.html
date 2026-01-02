@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="glass rounded-xl p-6 bg-white/70">
+  <div class="flex justify-between items-center">
+    <h2 class="text-xl font-semibold">{{ patient.name }}</h2>
+    <div class="flex gap-2">
+      <a href="/patients/{{ patient.id }}/edit/" class="px-3 py-2 rounded bg-sky-600 text-white hover:bg-sky-700">Edit</a>
+      <form method="post" action="/patients/{{ patient.id }}/delete/">
+        {% csrf_token %}
+        <button class="px-3 py-2 rounded bg-red-600 text-white hover:bg-red-700">Delete</button>
+      </form>
+    </div>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+    <div class="space-y-2">
+      <div><span class="text-slate-500">Age:</span> {{ patient.age }}</div>
+      <div><span class="text-slate-500">Gender:</span> {{ patient.get_gender_display }}</div>
+      <div><span class="text-slate-500">Phone:</span> {{ patient.phone }}</div>
+      <div><span class="text-slate-500">Address:</span> {{ patient.address }}</div>
+    </div>
+    <div class="space-y-2">
+      <div><span class="text-slate-500">Blood Type:</span> {{ patient.blood_type }}</div>
+      <div><span class="text-slate-500">Emergency Contact:</span> {{ patient.emergency_contact }}</div>
+      <div><span class="text-slate-500">Created:</span> {{ patient.created_at }}</div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
