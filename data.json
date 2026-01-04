@@ -1,0 +1,218 @@
+[
+{
+  "model": "auth.group",
+  "pk": 1,
+  "fields": {
+    "name": "Admin",
+    "permissions": []
+  }
+},
+{
+  "model": "auth.group",
+  "pk": 2,
+  "fields": {
+    "name": "Doctor",
+    "permissions": []
+  }
+},
+{
+  "model": "auth.group",
+  "pk": 3,
+  "fields": {
+    "name": "Nurse",
+    "permissions": []
+  }
+},
+{
+  "model": "auth.group",
+  "pk": 4,
+  "fields": {
+    "name": "Receptionist",
+    "permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$ra6OIJhJ4pbJhn4AqfzEDI$+OMoTfX0uEgFcChnkTYkrzDBinzb1V3+Jn/r2IW9Mco=",
+    "last_login": "2026-01-02T18:31:00.448Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "admin@mrhms.local",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-01-02T17:48:51.445Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$KaMOgiARsXbxBPAzd6JTIG$0eWJZnYjcV9XSa7OJG/m+wDLNCcg9tsp/XFNgShCuNs=",
+    "last_login": null,
+    "is_superuser": true,
+    "username": "axmad",
+    "first_name": "",
+    "last_name": "",
+    "email": "axmaddaahir1990@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-01-04T18:20:13.520Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "2mjo1ehe6kynserq76hizn66asc06xi6",
+  "fields": {
+    "session_data": ".eJxVjDEOwjAMAP_iGUVxSVzSkZ03RI7jkAJqpaadEH9HlTrAene6N0Te1hq3pkscMwyAcPplieWp0y7yg6f7bGSe1mVMZk_MYZu5zVlf16P9G1RuFQYo3umFFNkRBu5RHEsoFgnJowgWtNJnFel80aznQJgwBWIrmdh18PkC6kc4Tw:1vbjvQ:ntOuO5IY-p6jjRD1WdudFoUo1YC3HYkOMbfY9p8gpqI",
+    "expire_date": "2026-01-16T18:31:00.476Z"
+  }
+},
+{
+  "model": "patients.patient",
+  "pk": 1,
+  "fields": {
+    "name": "jamac cbadi",
+    "age": 19,
+    "gender": "M",
+    "phone": "4352613",
+    "address": "israac",
+    "blood_type": "0+",
+    "emergency_contact": "73772265",
+    "created_at": "2026-01-02T18:33:15.006Z"
+  }
+},
+{
+  "model": "patients.patient",
+  "pk": 2,
+  "fields": {
+    "name": "faarax",
+    "age": 20,
+    "gender": "M",
+    "phone": "43524566",
+    "address": "garsoor",
+    "blood_type": "A+",
+    "emergency_contact": "7865432",
+    "created_at": "2026-01-02T18:35:19.788Z"
+  }
+},
+{
+  "model": "patients.patient",
+  "pk": 3,
+  "fields": {
+    "name": "John Doe",
+    "age": 35,
+    "gender": "M",
+    "phone": "555-0001",
+    "address": "",
+    "blood_type": "",
+    "emergency_contact": "",
+    "created_at": "2026-01-02T20:49:47.196Z"
+  }
+},
+{
+  "model": "staff.staff",
+  "pk": 1,
+  "fields": {
+    "full_name": "Dr. Amina Ali",
+    "role": "DOCTOR",
+    "specialization": "Cardiology",
+    "phone": "",
+    "is_on_duty": true,
+    "availability_notes": ""
+  }
+},
+{
+  "model": "appointments.appointment",
+  "pk": 1,
+  "fields": {
+    "patient": 1,
+    "doctor": 1,
+    "scheduled_for": "2026-01-02T20:49:47.306Z",
+    "status": "PENDING",
+    "notes": "",
+    "created_at": "2026-01-02T20:49:47.310Z"
+  }
+},
+{
+  "model": "appointments.appointment",
+  "pk": 2,
+  "fields": {
+    "patient": 1,
+    "doctor": 1,
+    "scheduled_for": "2026-01-02T20:50:37.557Z",
+    "status": "PENDING",
+    "notes": "",
+    "created_at": "2026-01-02T20:50:37.560Z"
+  }
+},
+{
+  "model": "appointments.appointment",
+  "pk": 3,
+  "fields": {
+    "patient": 3,
+    "doctor": 1,
+    "scheduled_for": "2026-01-02T20:56:51.390Z",
+    "status": "PENDING",
+    "notes": "",
+    "created_at": "2026-01-02T20:56:51.394Z"
+  }
+},
+{
+  "model": "pharmacy.medicine",
+  "pk": 1,
+  "fields": {
+    "name": "Paracetamol",
+    "unit": "tablet",
+    "stock": 50,
+    "low_stock_threshold": 10,
+    "updated_at": "2026-01-02T20:56:51.419Z"
+  }
+},
+{
+  "model": "billing.invoice",
+  "pk": 1,
+  "fields": {
+    "patient": 3,
+    "amount": "25.00",
+    "status": "UNPAID",
+    "created_at": "2026-01-02T20:56:51.456Z"
+  }
+},
+{
+  "model": "rooms.room",
+  "pk": 1,
+  "fields": {
+    "name": "Ward A",
+    "type": "General"
+  }
+},
+{
+  "model": "rooms.bed",
+  "pk": 1,
+  "fields": {
+    "room": 1,
+    "number": "A1",
+    "is_available": true,
+    "assigned_patient": null
+  }
+},
+{
+  "model": "notifications.notification",
+  "pk": 1,
+  "fields": {
+    "title": "Welcome",
+    "message": "MRHMS has been set up successfully.",
+    "level": "success",
+    "is_read": false,
+    "created_at": "2026-01-02T20:56:51.479Z"
+  }
+}
+]

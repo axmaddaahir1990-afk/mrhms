@@ -1,1 +1,1 @@
-web: gunicorn mrhms.wsgi:application --log-file -
+web: python manage.py migrate && gunicorn mrhms.wsgi:application --log-file -

@@ -132,11 +132,39 @@ LOGOUT_REDIRECT_URL = '/login/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 import os
+
+# Security & Production Settings
 SECRET_KEY = os.getenv('SECRET_KEY', SECRET_KEY)
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.onrender.com']
-CSRF_TRUSTED_ORIGINS = ['https://*.onrender.com']
+
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.railway.app', '.up.railway.app']
+if os.getenv('RAILWAY_PUBLIC_DOMAIN'):
+    ALLOWED_HOSTS.append(os.getenv('RAILWAY_PUBLIC_DOMAIN'))
+
+CSRF_TRUSTED_ORIGINS = ['https://*.railway.app', 'https://*.up.railway.app']
+if os.getenv('RAILWAY_PUBLIC_DOMAIN'):
+    CSRF_TRUSTED_ORIGINS.append(f"https://{os.getenv('RAILWAY_PUBLIC_DOMAIN')}")
+
+# Whitenoise Setup
 if 'whitenoise.middleware.WhiteNoiseMiddleware' not in MIDDLEWARE:
     MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
+
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+# Use CompressedStaticFilesStorage to avoid 500 errors if a file is missing
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# Database Setup
+try:
+    import dj_database_url
+    db_url = os.getenv('DATABASE_URL')
+    if db_url:
+        DATABASES['default'] = dj_database_url.parse(db_url, conn_max_age=600, ssl_require=True)
+except ImportError:
+    pass
+
+# HTTPS Settings (Railway handles SSL, so we trust the proxy)
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+if not DEBUG:
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
